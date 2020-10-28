@@ -1,0 +1,20 @@
+{
+  "url": "/?/login",
+  "advenced": "//*[@id='details-button']",
+  "unsafe": "//*[@id='proceed-link']",
+  "giris": "//div[text()='Giriş']"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

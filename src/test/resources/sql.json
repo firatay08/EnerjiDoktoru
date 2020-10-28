@@ -1,0 +1,4 @@
+{
+  "kullanici bul": "SELECT email,role_type,update_time FROM users where name_='Fırat' ALLOW FILTERING",
+  "tesis getir": "SELECT * FROM facilities LIMIT 1"
+}

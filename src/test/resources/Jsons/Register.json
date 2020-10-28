@@ -1,0 +1,6 @@
+{
+  "url": "/?/register",
+  "advenced": "//*[@id='details-button']",
+  "unsafe": "//*[@id='proceed-link']",
+  "tamamla": "//div[text()='Tamamla']"
+}
