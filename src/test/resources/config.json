@@ -1,0 +1,8 @@
+{
+  "url_body": "https://localhost",
+  "database_ip": "192.168.4.69",
+  "database_port": "9042",
+  "database_username": "cassandra",
+  "database_password": "Ente$2019",
+  "database_keyspace":"entwatch_cross"
+}

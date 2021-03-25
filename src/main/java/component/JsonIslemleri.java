@@ -18,7 +18,11 @@ public class JsonIslemleri {
         return sonuc;
     }
     public String getQuery(String elementKey){
-        String sonuc=(String) getDataFile("sql.json").get(elementKey);;
+        String sonuc=(String) getDataFile("sql.json").get(elementKey);
+        return sonuc;
+    }
+    public String getConfig(String elementKey){
+        String sonuc=(String) getDataFile("config.json").get(elementKey);
         return sonuc;
     }
 

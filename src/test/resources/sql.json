@@ -1,4 +1,4 @@
 {
-  "kullanici bul": "SELECT email,role_type,update_time FROM users where name_='Fırat' ALLOW FILTERING",
+  "kullanici bul": "SELECT email,role_type,update_time FROM users LIMIT 1",
   "tesis getir": "SELECT * FROM facilities LIMIT 1"
 }

@@ -134,27 +134,13 @@ public class AnaIslemler {
 
 
     public void setSelecbox(String element, String value){
-        //sonIslemleri json=new JsonIslemleri();
+        //JsonIslemleri json=new JsonIslemleri();
         WebElement test =webDriver.findElement(By.id("#Ecom_Payment_Card_ExpDate_Month"));
         Select dropdown = new Select(test);
         dropdown.selectByIndex(4);
     }
 
-    public void textRandomMAil(String element){
-        JsonIslemleri json=new JsonIslemleri();
-        webDriver.findElement(By.xpath(json.getElement(element))).sendKeys(fastestRandomStringWithMixedCase(5)+"@test.com");
-    }
 
-    public String fastestRandomStringWithMixedCase(int length) {
-        Random random = new Random();
-        final int alphabetLength = 'Z' - 'A' + 1;
-        StringBuilder result = new StringBuilder(length);
-        while (result.length() < length) {
-            final char charCaseBit = (char) (random.nextInt(2) << 5);
-            result.append((char) (charCaseBit | ('A' + random.nextInt(alphabetLength))));
-        }
-        return result.toString();
-    }
 
     public void write(String text){
         if(text.contains("@bu") ){

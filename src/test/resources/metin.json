@@ -1,0 +1,4 @@
+{"metinler": [
+  { "degisken": "login hata mesaji", "turkce": "Lütfen kullanıcı adınızı ve şifrenizi tekrar kontrol edin", "english": "Please re-check your username and password" },
+  { "degisken": "gecersiz email", "turkce": "Lütfen geçerli bir e-mail adresi girin", "english": "Please enter a valid e-mail adress" }
+]}

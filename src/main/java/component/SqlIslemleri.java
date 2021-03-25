@@ -2,18 +2,27 @@ package component;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.ResultSet;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import org.testng.Assert;
+
+import static org.junit.Assert.fail;
 
 
 public class SqlIslemleri {
 
+
     public static void executeQuery(String query) {
+
         Cluster cluster;
         Session session;
         try {
-            // Cluster ve keyspace 'e bağlanıyoruz "entwatch_firat"
-            cluster = Cluster.builder().addContactPoint("192.168.4.69").withPort(9042).withAuthProvider(new PlainTextAuthProvider("cassandra", "Ente$2019")).build();
-            session = cluster.connect("entwatch_firat");
+            JsonIslemleri json=new JsonIslemleri();
+            JsonArray conf = new JsonArray();
+            // Cluster ve keyspace 'e bağlanıyoruz "entwatch_cross"
+            cluster = Cluster.builder().addContactPoint(json.getConfig("database_ip")).withPort(Integer.parseInt(json.getConfig("database_port"))).withAuthProvider(new PlainTextAuthProvider(json.getConfig("database_username"), json.getConfig("database_password"))).build();
+            session = cluster.connect(json.getConfig("database_keyspace"));
 
             ResultSet results = session.execute(query);
 
@@ -37,14 +46,15 @@ public class SqlIslemleri {
                     }
 
                 }
-                //Degiskenler.yazobjeyi();
+                Degiskenler.yazobjeyi();
             }
 
             cluster.close();
         }
         catch(Exception e) {
-            System.out.println("sql hatası");
-            Assert.assertTrue(false);
+            System.out.println("sql hatası: " + e);
+            //Assert.assertTrue(false);
+            fail();
         }
 
 

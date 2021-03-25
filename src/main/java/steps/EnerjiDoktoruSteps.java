@@ -3,7 +3,7 @@ package steps;
 import component.EnerjiDoktoru;
 import io.cucumber.java.tr.Eğerki;
 import io.cucumber.java.tr.Diyelimki;
-
+import io.cucumber.java.tr.Ve;
 
 
 public class EnerjiDoktoruSteps extends EnerjiDoktoru{
@@ -18,6 +18,6 @@ public class EnerjiDoktoruSteps extends EnerjiDoktoru{
 
     }
 
-
-
+    @Ve("{string} ekranına gidersem")
+    public void ekraninaGidersem(String ekran) { goToPage(ekran); }
 }
