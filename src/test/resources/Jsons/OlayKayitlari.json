@@ -1,0 +1,15 @@
+{
+  "url": "/?/login",
+  "advenced": "//*[@id='details-button']",
+  "unsafe": "//*[@id='proceed-link']",
+  "giris": "//button[text()='Giriş']",
+  "avatar": "//div[@class='userArea']",
+  "donanimlarim": "//div[text()='Donanımlarım']/.. | //div[text()='My Hardware']/..",
+  "uc nokta gercek": "//span[text()='emr 53s 2']/../following-sibling::div[4]",
+  "uc nokta sallama": "//span[text()='sallama cihaz']/../following-sibling::div[4]",
+  "olay kayitlari gercek": "//span[text()='emr 53s 2']/../following-sibling::div[5]/div[@data-option-key='event-log']/a",
+  "olay kayitlari sallama": "//span[text()='sallama cihaz']/../following-sibling::div[5]/div[@data-option-key='event-log']/a",
+  "tablo icerik": "//tbody/tr[1]/td[2]",
+  "uc nokta2": "//a[@ng-reflect-nz-placement='bottomRight']",
+  "exzele aktar": "//li[text()=\"Excel'e Aktar\"]"
+}
