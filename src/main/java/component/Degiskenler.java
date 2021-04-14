@@ -5,7 +5,9 @@ import org.json.simple.JSONObject;
 public class Degiskenler {
     public static String acilanEkran;
     public static String sonTiklananOge;
+    public static String dilSecimi="TR";
     public static int beklemeSuresi=20;
+    public static String arananMetin;
     public static JSONObject jsonObject = new JSONObject();
 
     public static void yazobjeyi(){ System.out.println(jsonObject);}

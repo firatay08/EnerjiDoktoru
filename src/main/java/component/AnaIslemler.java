@@ -1,13 +1,23 @@
 package component;
 
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.*;
+import com.microsoft.edge.seleniumtools.EdgeDriver;
+import com.microsoft.edge.seleniumtools.EdgeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
@@ -29,11 +39,51 @@ public class AnaIslemler {
 
 
     public void openBrowser(){
-        System.out.println("Tarayıcı açılıyor...");
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        webDriver = new ChromeDriver( options );
+
+        JsonIslemleri jsonIslemleri=new JsonIslemleri();
+        String tarayici= jsonIslemleri.getConfig("browser");
+        System.out.println(tarayici+" açılıyor...");
+        if("chrome".equals(tarayici)) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--start-maximized");
+            webDriver = new ChromeDriver(options);
+        }
+        else if("firefox".equals(tarayici)) {
+            WebDriverManager.firefoxdriver().setup();
+            FirefoxOptions options=new FirefoxOptions();
+            options.addArguments("--start-maximized");
+            webDriver = new FirefoxDriver(options);
+        }
+        else if("internet explorer".equals(tarayici)) {
+            WebDriverManager.iedriver().setup();
+            webDriver = new InternetExplorerDriver();
+        }
+        else if("microsoft edge".equals(tarayici)){
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options= new EdgeOptions();
+            options.addArguments("--start-maximized");
+            webDriver=new EdgeDriver(options);
+        }
+        else if("safari".equals(tarayici)){
+            WebDriverManager.operadriver().setup();
+            OperaOptions options= new OperaOptions();
+            options.addArguments("--start-maximized");
+            webDriver=new OperaDriver(options);
+        }
+        else if("opera".equals(tarayici)) {
+            System.setProperty("webdriver.opera.driver","src/test/resources/Browser/operadriver.exe");
+            WebDriver webDriver;
+            webDriver=new OperaDriver();
+            webDriver.manage().window().maximize();
+//            WebDriverManager.operadriver().setup();
+//            OperaOptions options=new OperaOptions();
+//            options.addArguments("--start-maximized");
+//            webDriver = new OperaDriver(options);
+        }
+         else {
+            System.out.println(tarayici +" Tarayıcısı bulunamadı");
+        }
     }
 
 
@@ -117,9 +167,19 @@ public class AnaIslemler {
 
 
     public void seeText(String text){
-        String newText="//*[contains(text(),'"+text+"')]";
+        JsonIslemleri json=new JsonIslemleri();
+        String textValue=text;
+        if(text.contains("@bu") ){
+            if (Degiskenler.getJson(text)!=null){
+                textValue=Degiskenler.getJson(text).toString(); //bu isinde değişken varsa onu alır
+            }
+            else{
+                textValue=json.getDataText(text); //bu isimde metin.json' da tanımlanmış öğe varsa onu alır
+            }
+        }
+        String newText="//*[contains(text(),'"+textValue+"')]";
         int counter=0;
-        while(true) {
+        while(true) {//bekleme süresi için döngüye alındı
             By countInstructors = By.xpath(newText);
             int elementCount = webDriver.findElements(countInstructors).size();
             if (elementCount>0)
@@ -164,6 +224,39 @@ public class AnaIslemler {
     public void createRandomCharacter(int lengt, String type, String key){
         RandomDeger randomDeger=new RandomDeger();
         randomDeger.createVeriable(lengt,type,key);
+
+    }
+    public void changeLanguage(String lang){
+
+        Degiskenler.dilSecimi=lang;
+        //Angular kısmı, bu kısım için ekstra çalışma yapılacak
+        int elementCount = webDriver.findElements(By.xpath("//app-language")).size();
+        if(elementCount>0) {
+            WebElement webElement = webDriver.findElement(By.xpath("//app-language"));
+            webElement.click();
+            //webElement = webDriver.findElement(By.xpath("//div[@class='flag'][text()='EN']"));
+            //webElement.click();
+        }
+        else{
+            if ("TR".equals(lang)) {
+                WebElement webElement = webDriver.findElement(By.xpath("//div[@class='flag'][text()='TR']"));
+                webElement.click();
+                webElement = webDriver.findElement(By.xpath("//div[@class='flag'][text()='EN']"));
+                webElement.click();
+            } else if ("EN".equals(lang)) {
+                WebElement webElement = webDriver.findElement(By.xpath("//div[@class='flag'][text()='TR']"));
+                webElement.click();
+                webElement = webDriver.findElement(By.xpath("//div[@class='flag'][text()='EN']"));
+                webElement.click();
+            }
+        }
+    }
+
+    public void focusElement(String element){
+        JsonIslemleri jsonIslemleri= new JsonIslemleri();
+        String xpath= jsonIslemleri.getElement(element);
+        Actions action = new Actions(webDriver);
+        action.moveToElement(webDriver.findElement(By.xpath(xpath))).build().perform();
 
     }
 

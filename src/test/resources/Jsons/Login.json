@@ -2,7 +2,9 @@
   "url": "/?/login",
   "advenced": "//*[@id='details-button']",
   "unsafe": "//*[@id='proceed-link']",
-  "giris": "//button[text()='Giriş']"
+  "giris": "//button[text()='Giriş'] | //button[text()='Login']",
+  "test": "//*[@class='menu']/div[4]/div[2]/div",
+  "afd": "//*[@class='menu']/div[4]/div"
 }
 
 

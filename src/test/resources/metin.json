@@ -1,4 +1,5 @@
-{"metinler": [
-  { "degisken": "login hata mesaji", "turkce": "Lütfen kullanıcı adınızı ve şifrenizi tekrar kontrol edin", "english": "Please re-check your username and password" },
-  { "degisken": "gecersiz email", "turkce": "Lütfen geçerli bir e-mail adresi girin", "english": "Please enter a valid e-mail adress" }
-]}
+[ {"metinler": { "degisken": "@bu login_hata_mesaji", "TR": "Lütfen kullanıcı adınızı ve şifrenizi tekrar kontrol edin", "EN": "Please re-check your username and password" }},
+  {"metinler":{ "degisken": "@bu gecersiz_email", "TR": "Lütfen geçerli bir e-mail adresi girin", "EN": "Please enter a valid e-mail adress" }},
+  {"metinler":{ "degisken": "@bu veri_yok", "TR": "Veri Yok", "EN": "No Data." }}
+
+]

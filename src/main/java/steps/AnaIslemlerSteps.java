@@ -94,4 +94,14 @@ public class AnaIslemlerSteps extends AnaIslemler {
     public void tuşunaBasarsam(String tus) {
         pressKey(tus);
     }
+
+    @Ve("dili {string} olarak değiştirirsem")
+    public void diliOlarakDegistirirsem(String dil) {
+        changeLanguage(dil);
+    }
+
+    @Ve("{string} öğesine focus yaparsam")
+    public void ögesineFocusYaparsam(String element) {
+        focusElement(element);
+    }
 }

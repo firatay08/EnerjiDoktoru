@@ -1,0 +1,9 @@
+{
+  "url": "/?/login",
+  "advenced": "//*[@id='details-button']",
+  "unsafe": "//*[@id='proceed-link']",
+  "giris": "//button[text()='Giriş']",
+  "avatar": "//div[@class='userArea']",
+  "verimlilik": "//div[text()='Verimlilik']",
+  "sayac indeksleri": "//div[text()='Sayaç İndeksleri']/.."
+}

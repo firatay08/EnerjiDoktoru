@@ -1,5 +1,7 @@
 {
+  "_comment": "browser kısmına chrome ve firefox değerleri verilebilir",
   "url_body": "https://localhost",
+  "browser": "chrome",
   "database_ip": "192.168.4.69",
   "database_port": "9042",
   "database_username": "cassandra",
